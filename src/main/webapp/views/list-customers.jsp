@@ -13,10 +13,12 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
+<%
+	session.setAttribute("Username","tempUser");
+%>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-10">
-			<h3 class="text-center">Spring MVC 5 + Spring Data JPA 2 + JSP +
-				MySQL Example - Customer Management</h3>
+			<h3 class="text-center"></h3>
 			<hr />
 
 			<input type="button" value="Add Customer"

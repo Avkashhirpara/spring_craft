@@ -11,7 +11,9 @@
 	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-
+	<%
+		session.setAttribute("Username","tempUser");
+	%>
 </head>
 <body>
 	<div class="container">
@@ -65,6 +67,7 @@
 							<label for="date_of_birth" class="col-md-3 control-label">DOB</label>
 							<div class="col-md-9">
 								<form:input path="date_of_birth" cssClass="form-control" />
+								<form:hidden path="version" cssClass="form-control" />
 							</div>
 						</div>
 

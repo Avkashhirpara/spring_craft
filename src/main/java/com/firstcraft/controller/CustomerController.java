@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -40,6 +42,10 @@ public class CustomerController {
 
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
+
+        HttpServletRequest request=((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session = request.getSession(true);
+        session.setAttribute("Username",theCustomer.getFname());
         customerService.saveCustomer(theCustomer);
         return "redirect:/customer/list";
     }

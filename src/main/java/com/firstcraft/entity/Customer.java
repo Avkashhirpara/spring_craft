@@ -110,4 +110,36 @@ public class Customer extends AuditEnabledEntity {
                 '}';
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
+
+        Customer customer = (Customer) o;
+
+        if (getId() != null ? !getId().equals(customer.getId()) : customer.getId() != null) return false;
+        if (getFname() != null ? !getFname().equals(customer.getFname()) : customer.getFname() != null) return false;
+        if (getLname() != null ? !getLname().equals(customer.getLname()) : customer.getLname() != null) return false;
+        if (getmInitial() != null ? !getmInitial().equals(customer.getmInitial()) : customer.getmInitial() != null)
+            return false;
+        if (getZipcode() != null ? !getZipcode().equals(customer.getZipcode()) : customer.getZipcode() != null)
+            return false;
+        if (getCreated_date() != null ? !getCreated_date().equals(customer.getCreated_date()) : customer.getCreated_date() != null)
+            return false;
+        return getDate_of_birth() != null ? getDate_of_birth().equals(customer.getDate_of_birth()) : customer.getDate_of_birth() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getFname() != null ? getFname().hashCode() : 0);
+        result = 31 * result + (getLname() != null ? getLname().hashCode() : 0);
+        result = 31 * result + (getmInitial() != null ? getmInitial().hashCode() : 0);
+        result = 31 * result + (getZipcode() != null ? getZipcode().hashCode() : 0);
+        result = 31 * result + (getCreated_date() != null ? getCreated_date().hashCode() : 0);
+        result = 31 * result + (getDate_of_birth() != null ? getDate_of_birth().hashCode() : 0);
+        return result;
+    }
 }
