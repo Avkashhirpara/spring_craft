@@ -31,10 +31,11 @@ import java.util.Properties;
         "com.firstcraft"
 })
 @EnableJpaRepositories(
-        basePackages = "com.firstcraft.repository",
+        basePackages = "com.firstcraft",
         repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class
+
 )
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorAwareImpl")
 public class PersistenceJPAConfig {
 
     @Autowired
@@ -50,7 +51,7 @@ public class PersistenceJPAConfig {
         final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan(new String[] {
-                "com.firstcraft.entity"
+                "com.firstcraft"
         });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();

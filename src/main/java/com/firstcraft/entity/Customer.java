@@ -1,6 +1,7 @@
 package com.firstcraft.entity;
 
 
+import com.firstcraft.audit.AuditEnabledEntity;
 import groovy.transform.ToString;
 import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name="customer")
 @Audited
-public class Customer {
+public class Customer extends AuditEnabledEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
